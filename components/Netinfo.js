@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import NetInfo from '@react-native-community/netinfo';
 import Pusher from 'pusher-js/react-native';
+import BlinkandeFyrkant from './BlinkandeFyrkant';
 
 
 
@@ -25,6 +26,7 @@ const Netinfo = () => {
     return (
         <View>
             <Text>netinfo</Text>
+            <BlinkandeFyrkant color={'red'} />
         </View>
     )
 }
