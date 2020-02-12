@@ -11,10 +11,10 @@ const Netinfo = () => {
 
     const [farg, setFarg] = useState('red');
 
-    NetInfo.fetch().then(state => {
-        console.log('Connection type', state.type);
-        console.log('Is connected?', state.isConnected);
-    });
+    // NetInfo.fetch().then(state => {
+    //     console.log('Connection type', state.type);
+    //     console.log('Is connected?', state.isConnected);
+    // });
 
     const pusher = new Pusher("959108219678a5d6f07d", {
         cluster: "eu",
@@ -28,8 +28,15 @@ const Netinfo = () => {
 
     return (
         <View>
+
             <Text>netinfo</Text>
+
             <BlinkandeFyrkant color={farg} />
+            <Button
+                title="Press me"
+                onPress={() => setFarg('red')}
+            />
+
         </View>
     )
 }
