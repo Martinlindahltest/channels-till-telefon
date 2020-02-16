@@ -10,9 +10,7 @@ const pusher = new Pusher("959108219678a5d6f07d", {
 var channel = pusher.subscribe('my-channel');
 
 
-const channelFunction = (input) => channel.bind('my-event', function (data) {
-    alert(JSON.stringify(data));
-    console.log(input)
-});
 
-module.exports = channelFunction;
+
+
+module.exports = channel;

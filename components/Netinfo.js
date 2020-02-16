@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { View, Text, Button } from 'react-native'
 import NetInfo from '@react-native-community/netinfo';
 import BlinkandeFyrkant from './BlinkandeFyrkant';
-import channelFunction from './Connect'
+import channel from './Connect'
+
 
 
 
@@ -10,6 +11,12 @@ import channelFunction from './Connect'
 const Netinfo = () => {
 
     const [farg, setFarg] = useState('red');
+    const [data, setData] = useState(null);
+
+    channel.bind('my-event', function (data) {
+        alert(JSON.stringify(data));
+        setData(JSON.stringify(data))
+    });
 
 
     // NetInfo.fetch().then(state => {
@@ -17,10 +24,7 @@ const Netinfo = () => {
     //     console.log('Is connected?', state.isConnected);
     // });
 
-
-
-
-    channelFunction('testinput')
+    console.log('data', data)
 
     return (
         <View>
