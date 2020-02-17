@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midi-controller</title>
+</head>
+<script>
+  const nodeserver = "http://18.194.73.104:4000/";
+
+  navigator.requestMIDIAccess({
+      sysex: true
+    })
+    .then(function (access) {
+
+
+      access.onstatechange = function (e) {
+        // Print information about the (dis)connected MIDI controller
+        console.log(e);
+      };
+      if (access) {
+        console.log(access)
+        for (var input of access.inputs.values())
+
+          input.onmidimessage = getMIDIMessage;
+
+        function getMIDIMessage(midiMessage) {
+          console.log(midiMessage.data[0]);
+          kopplaTillNode(midiMessage.data['0'])
+        }
+      }
+
+    });
+
+
+
+  function kopplaTillNode(data) {
+    fetch(nodeserver, {
+        method: 'POST',
+        body: JSON.stringify({
+          data
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        return response.text()
+      })
+      .then((myResponse) => {
+        console.log(myResponse)
+      })
+  }
+</script>
+
+<body>
+  <button onclick='kopplaTillNode()'>skicka signal</button>
+</body>
+
+</html>

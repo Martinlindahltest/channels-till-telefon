@@ -10,12 +10,16 @@ import channel from './Connect'
 
 const Netinfo = () => {
 
-    const [farg, setFarg] = useState('red');
+    const [farg, setFarg] = useState({
+        message: {
+            data: 128
+        }
+    })
     const [data, setData] = useState('vetej');
 
     channel.bind('my-event', function (data) {
-
-        setFarg(data.name)
+        console.log(data)
+        setFarg(data)
 
     });
 
@@ -27,7 +31,11 @@ const Netinfo = () => {
             <BlinkandeFyrkant color={farg} />
             <Button
                 title="Press me"
-                onPress={() => setFarg('red')}
+                onPress={() => setFarg({
+                    message: {
+                        data: 144
+                    }
+                })}
             />
 
         </View>
