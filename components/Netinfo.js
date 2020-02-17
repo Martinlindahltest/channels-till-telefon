@@ -11,20 +11,13 @@ import channel from './Connect'
 const Netinfo = () => {
 
     const [farg, setFarg] = useState('red');
-    const [data, setData] = useState(null);
+    const [data, setData] = useState('vetej');
 
     channel.bind('my-event', function (data) {
-        alert(JSON.stringify(data));
-        setData(JSON.stringify(data))
+
+        setFarg(data.name)
+
     });
-
-
-    // NetInfo.fetch().then(state => {
-    //     console.log('Connection type', state.type);
-    //     console.log('Is connected?', state.isConnected);
-    // });
-
-    console.log('data', data)
 
     return (
         <View>
