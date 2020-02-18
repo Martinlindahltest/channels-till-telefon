@@ -18,7 +18,7 @@ const Netinfo = () => {
     const [data, setData] = useState('vetej');
 
     channel.bind('my-event', function (data) {
-        console.log(data)
+        // console.log(data)
         setFarg(data)
 
     });
