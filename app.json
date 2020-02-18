@@ -23,12 +23,12 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.digitalindahl.festival-midi",
+      "bundleIdentifier": "com.digitalindahl.festivalmidi",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.digitalindahl.festival-midi",
+      "package": "com.digitalindahl.festivalmidi",
       "versionCode": 1,
       "permissions": []
     }
